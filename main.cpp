@@ -53,8 +53,7 @@ bool isNumber(std::string const &strNumber) {
     try {
         std::stoi(strNumber);
     } catch (std::invalid_argument &invalid_argument) {
-        std::cout << "[error] Input number not correct (not a number). (" << invalid_argument.what() << ")"
-                  << std::endl;
+        std::cout << "[error] Input number not correct (not a number)." << std::endl;
         return false;
     } catch (std::out_of_range &out_of_range) {
         std::cout << "[error] Input number too much. Max available number is " << std::numeric_limits<int>::max() <<
@@ -86,6 +85,10 @@ int main() {
         }
         if (numbers.size() > 2) {
             std::cout << "[warn] Unused numbers." << std::endl;
+        }
+        if(!isNumber(numbers[0]) || !isNumber(numbers[1])) {
+            std::cout << "[error] Invalid args" << std::endl;
+            continue;
         }
         int n = std::stoi(numbers[0]);
         int k = std::stoi(numbers[1]);
